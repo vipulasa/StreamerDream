@@ -105,71 +105,15 @@
 </template>
 
 <script setup>
-const albums = [
-  {
-    id: 1,
-    name: 'Paata',
-    number_of_tracks: 8,
-    year: 2020,
-    album_art: 'IMAGE_URL',
-    artist: {
-      id: 1,
-      name: 'Costa',
-      avatar: 'IMAGE_URL'
-    },
-    studio: 'COSTA Songs',
-    genre: 'RAP',
-    sort_order: 0,
-    status: true // Published etc.
-  },
-  {
-    id: 2,
-    name: 'Paata',
-    number_of_tracks: 8,
-    year: 2020,
-    album_art: 'IMAGE_URL',
-    artist: {
-      id: 1,
-      name: 'Costa',
-      avatar: 'IMAGE_URL'
-    },
-    studio: 'COSTA Songs',
-    genre: 'RAP',
-    sort_order: 0,
-    status: true // Published etc.
-  },
-  {
-    id: 3,
-    name: 'Paata',
-    number_of_tracks: 8,
-    year: 2020,
-    album_art: 'IMAGE_URL',
-    artist: {
-      id: 1,
-      name: 'Costa',
-      avatar: 'IMAGE_URL'
-    },
-    studio: 'COSTA Songs',
-    genre: 'RAP',
-    sort_order: 0,
-    status: true // Published etc.
-  },
-  {
-    id: 4,
-    name: 'Paata',
-    number_of_tracks: 8,
-    year: 2020,
-    album_art: 'IMAGE_URL',
-    artist: {
-      id: 1,
-      name: 'Costa',
-      avatar: 'IMAGE_URL'
-    },
-    studio: 'COSTA Songs',
-    genre: 'RAP',
-    sort_order: 0,
-    status: true // Published etc.
-  }
-]
+import { ref } from 'vue'
+
+const albums = ref([])
+
+fetch('https://c8jmtrwst7.execute-api.ap-southeast-1.amazonaws.com/dev/albums')
+  .then((response) => response.json())
+  .then((response) => {
+    console.log(response)
+    albums.value = response.body
+  })
 </script>
 <style></style>
